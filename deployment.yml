@@ -11,6 +11,10 @@ spec:
       labels:
         app: jenkins
     spec:
+    volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+       claimName: jenkinsvolume
       containers:
       - name: jenkins
         image: lolzah/jjajenkins:2
