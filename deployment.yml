@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: Service
 metadata:
   name: jenkins
 spec:
   replicas: 1
   strategy:
-    type: Recreate
+    type: LoadBalancer
   template:
     metadata:
       labels:
@@ -19,8 +19,9 @@ spec:
       - name: jenkins
         image: lolzah/jjajenkins:2
         ports:
-        - containerPort: 8080
-        - containerPort: 50000
+        - port: 8080
+          protocol: TCP
+          targetPort: 8080
         volumeMounts:
         - name: jenkinsvolume
           mountPath: /var/jenkins_home
