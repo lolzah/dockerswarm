@@ -12,7 +12,7 @@ spec:
         app: jenkins
     spec:
       volumes:
-      - name: jenkinsvolumespec
+      - name: jenkinsvolume
         persistentVolumeClaim:
           claimName: jenkinsvolume
       containers:
