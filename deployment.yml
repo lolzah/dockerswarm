@@ -3,24 +3,10 @@ kind: Service
 metadata:
   name: jenkins
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: jenkins
-    spec:
-      volumes:
-      - name: jenkinsvolume
-        persistentVolumeClaim:
-          claimName: jenkinsvolume
-      containers:
-      - name: jenkins
-        image: lolzah/jjajenkins:2
-        ports:
-        - containerPort: 8080
-        - containerPort: 50000
-        volumeMounts:
-        - name: jenkinsvolume
-          mountPath: /var/jenkins_home
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: lolzah/jjajenkins:2
