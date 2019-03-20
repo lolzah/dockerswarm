@@ -14,7 +14,7 @@ spec:
       volumes:
       - name: task-pv-storage
         persistentVolumeClaim:
-          claimName: jenkinsvolume
+          claimName: task-pv-claim
       containers:
       - name: jenkins
         image: lolzah/jjajenkins:2
