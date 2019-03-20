@@ -22,5 +22,5 @@ spec:
         - containerPort: 8080
         - containerPort: 50000
         volumeMounts:
-        - mountPath: "/var/jenkins_home"
+          -  mountPath: "/var/jenkins_home"
           name: jenkinsvolume
