@@ -1,14 +1,11 @@
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: jenkinsvolume
-  labels:
-    type: local
 spec:
-  storageClassName: manual
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data"
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
