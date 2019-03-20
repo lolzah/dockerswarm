@@ -11,16 +11,16 @@ spec:
       labels:
         app: jenkins
     spec:
-      volumes:
-      - name: task-pv-storage
-        persistentVolumeClaim:
-          claimName: task-pv-claim
       containers:
       - name: jenkins
         image: lolzah/jjajenkins:2
         ports:
         - containerPort: 8080
         - containerPort: 50000
-        volumeMounts:
+      volumes:
+      - name: jenkinsvolume
+        persistentVolumeClaim:
+          claimName: jenkinsvolume
+      volumeMounts:
         - mountPath: "/var/jenkins_home"
           name: jenkinsvolume
